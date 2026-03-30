@@ -1,0 +1,5 @@
+---
+- name: Install Google Workspace CLI
+  community.general.homebrew:
+    name: googleworkspace-cli
+    state: present

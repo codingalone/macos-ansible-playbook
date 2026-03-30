@@ -1,0 +1,5 @@
+---
+- name: Install mas (Mac App Store CLI)
+  community.general.homebrew:
+    name: mas
+    state: present

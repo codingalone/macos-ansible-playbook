@@ -1,0 +1,11 @@
+---
+- name: Check if Slack is already installed
+  stat:
+    path: /Applications/Slack.app
+  register: slack_installed
+
+- name: Install Slack
+  community.general.homebrew_cask:
+    name: slack
+    state: present
+  when: not slack_installed.stat.exists

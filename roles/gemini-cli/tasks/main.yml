@@ -1,0 +1,5 @@
+---
+- name: Install Gemini CLI
+  community.general.homebrew:
+    name: gemini-cli
+    state: present

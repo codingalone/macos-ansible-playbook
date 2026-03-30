@@ -1,0 +1,5 @@
+---
+- name: Install GNU Stow
+  community.general.homebrew:
+    name: stow
+    state: present

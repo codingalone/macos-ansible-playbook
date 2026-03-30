@@ -1,0 +1,5 @@
+---
+- name: Install Codex
+  community.general.homebrew_cask:
+    name: codex
+    state: present
