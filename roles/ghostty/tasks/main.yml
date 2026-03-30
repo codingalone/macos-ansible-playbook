@@ -1,0 +1,11 @@
+---
+- name: Check if Ghostty is already installed
+  stat:
+    path: /Applications/Ghostty.app
+  register: ghostty_app
+
+- name: Install Ghostty
+  community.general.homebrew_cask:
+    name: ghostty
+    state: present
+  when: not ghostty_app.stat.exists

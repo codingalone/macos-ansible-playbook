@@ -1,0 +1,11 @@
+---
+- name: Check if Raycast is already installed
+  stat:
+    path: /Applications/Raycast.app
+  register: raycast_app
+
+- name: Install Raycast
+  community.general.homebrew_cask:
+    name: raycast
+    state: present
+  when: not raycast_app.stat.exists

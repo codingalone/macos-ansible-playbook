@@ -1,0 +1,11 @@
+---
+- name: Check if Claude Desktop is already installed
+  stat:
+    path: /Applications/Claude.app
+  register: claude_app
+
+- name: Install Claude Desktop
+  community.general.homebrew_cask:
+    name: claude
+    state: present
+  when: not claude_app.stat.exists

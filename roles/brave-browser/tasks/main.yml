@@ -1,0 +1,11 @@
+---
+- name: Check if Brave Browser is already installed
+  stat:
+    path: /Applications/Brave Browser.app
+  register: brave_app
+
+- name: Install Brave Browser
+  community.general.homebrew_cask:
+    name: brave-browser
+    state: present
+  when: not brave_app.stat.exists

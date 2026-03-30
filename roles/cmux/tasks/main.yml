@@ -1,0 +1,11 @@
+---
+- name: Check if cmux is already installed
+  stat:
+    path: /Applications/cmux.app
+  register: cmux_app
+
+- name: Install cmux
+  community.general.homebrew_cask:
+    name: cmux
+    state: present
+  when: not cmux_app.stat.exists

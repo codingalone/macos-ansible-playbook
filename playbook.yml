@@ -1,0 +1,19 @@
+---
+- name: Setup macOS
+  hosts: localhost
+  connection: local
+
+  roles:
+    - karabiner
+    - google-japanese-ime
+    - raycast
+    - mise
+    - fish
+    - ghostty
+    - cmux
+    - alt-tab
+    - obsidian
+    - brave-browser
+    - claude-desktop
+    - claude-code
+    - dato

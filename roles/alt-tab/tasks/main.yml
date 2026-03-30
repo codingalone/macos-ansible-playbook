@@ -1,0 +1,11 @@
+---
+- name: Check if AltTab is already installed
+  stat:
+    path: /Applications/AltTab.app
+  register: alttab_app
+
+- name: Install AltTab
+  community.general.homebrew_cask:
+    name: alt-tab
+    state: present
+  when: not alttab_app.stat.exists

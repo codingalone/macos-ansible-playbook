@@ -1,0 +1,10 @@
+---
+- name: Ensure mas is installed
+  community.general.homebrew:
+    name: mas
+    state: present
+
+- name: Install Dato from App Store
+  command: mas install 1470584107
+  register: dato_result
+  changed_when: "'is already installed' not in dato_result.stdout"

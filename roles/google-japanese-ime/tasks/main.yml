@@ -1,0 +1,11 @@
+---
+- name: Check if Google Japanese IME is already installed
+  stat:
+    path: /Applications/GoogleJapaneseInput.localized
+  register: google_ime_app
+
+- name: Install Google Japanese IME
+  community.general.homebrew_cask:
+    name: google-japanese-ime
+    state: present
+  when: not google_ime_app.stat.exists

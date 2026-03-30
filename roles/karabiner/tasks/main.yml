@@ -1,0 +1,20 @@
+---
+- name: Ensure git is available
+  command: git --version
+  changed_when: false
+
+- name: Check if Karabiner-Elements is already installed
+  stat:
+    path: /Applications/Karabiner-Elements.app
+  register: karabiner_app
+
+- name: Install Karabiner-Elements
+  community.general.homebrew_cask:
+    name: karabiner-elements
+    state: present
+  when: not karabiner_app.stat.exists
+
+- name: Clone Karabiner-Elements config
+  git:
+    repo: https://github.com/codingalone/karabiner-elements.git
+    dest: ~/.config/karabiner
