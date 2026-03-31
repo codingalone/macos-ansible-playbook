@@ -28,3 +28,5 @@
     - slack
     - google-drive
     - notchnook
+    - jetbrains-mono
+    - fzf

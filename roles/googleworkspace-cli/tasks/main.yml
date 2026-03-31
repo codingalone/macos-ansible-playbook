@@ -3,9 +3,14 @@
   community.general.homebrew:
     name: googleworkspace-cli
     state: present
-  ignore_errors: true
-  register: gws_install
 
-- name: Force link Google Workspace CLI
-  command: brew link --overwrite googleworkspace-cli
-  when: gws_install is failed
+- name: Ensure Google Workspace CLI is linked
+  command: brew link googleworkspace-cli
+  register: gws_link
+  changed_when: "'symlinks created' in gws_link.stdout"
+  failed_when: false
+
+- name: Force relink Google Workspace CLI if needed
+  command: brew unlink googleworkspace-cli && brew link googleworkspace-cli
+  when: gws_link.rc != 0
+  changed_when: true
