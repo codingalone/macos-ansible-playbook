@@ -3,3 +3,9 @@
   community.general.homebrew:
     name: googleworkspace-cli
     state: present
+  ignore_errors: true
+  register: gws_install
+
+- name: Force link Google Workspace CLI
+  command: brew link --overwrite googleworkspace-cli
+  when: gws_install is failed

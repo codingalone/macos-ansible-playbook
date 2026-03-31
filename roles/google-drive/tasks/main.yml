@@ -1,0 +1,11 @@
+---
+- name: Check if Google Drive is already installed
+  stat:
+    path: /Applications/Google Drive.app
+  register: google_drive_installed
+
+- name: Install Google Drive
+  community.general.homebrew_cask:
+    name: google-drive
+    state: present
+  when: not google_drive_installed.stat.exists

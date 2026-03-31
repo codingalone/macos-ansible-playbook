@@ -1,0 +1,11 @@
+---
+- name: Check if NotchNook is already installed
+  stat:
+    path: /Applications/NotchNook.app
+  register: notchnook_installed
+
+- name: Install NotchNook
+  community.general.homebrew_cask:
+    name: notchnook
+    state: present
+  when: not notchnook_installed.stat.exists
