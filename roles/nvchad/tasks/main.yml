@@ -1,0 +1,12 @@
+---
+- name: Install Neovim
+  community.general.homebrew:
+    name: neovim
+    state: present
+
+- name: Clone NvChad starter config
+  ansible.builtin.git:
+    repo: https://github.com/NvChad/starter.git
+    dest: "{{ ansible_facts.env.HOME }}/.config/nvim"
+    depth: 1
+    update: false
