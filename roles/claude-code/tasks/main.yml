@@ -1,5 +1,10 @@
 ---
+- name: Check if Claude Code is already installed
+  ansible.builtin.command: which claude
+  register: claude_code_installed
+  changed_when: false
+  failed_when: false
+
 - name: Install Claude Code
-  community.general.homebrew_cask:
-    name: claude-code
-    state: present
+  ansible.builtin.shell: curl -fsSL https://claude.ai/install.sh | bash
+  when: claude_code_installed.rc != 0

@@ -1,0 +1,11 @@
+---
+- name: Check if Duet is already installed
+  stat:
+    path: /Applications/duet.app
+  register: duet_installed
+
+- name: Install Duet
+  community.general.homebrew_cask:
+    name: duet
+    state: present
+  when: not duet_installed.stat.exists
