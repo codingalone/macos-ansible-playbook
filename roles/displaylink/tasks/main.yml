@@ -1,0 +1,11 @@
+---
+- name: Check if DisplayLink Manager is already installed
+  stat:
+    path: /Applications/DisplayLink Manager.app
+  register: displaylink_installed
+
+- name: Install DisplayLink Manager
+  community.general.homebrew_cask:
+    name: displaylink
+    state: present
+  when: not displaylink_installed.stat.exists
