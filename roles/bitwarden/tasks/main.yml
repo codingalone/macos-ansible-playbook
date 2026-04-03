@@ -1,0 +1,15 @@
+---
+- name: Ensure mas is installed
+  community.general.homebrew:
+    name: mas
+    state: present
+
+- name: Install Bitwarden from App Store
+  command: mas purchase 1352778147
+  register: bitwarden_result
+  changed_when: "'Already got' not in bitwarden_result.stderr"
+
+- name: Install Bitwarden CLI
+  community.general.homebrew:
+    name: bitwarden-cli
+    state: present

@@ -1,0 +1,5 @@
+---
+- name: Install blink1
+  community.general.homebrew:
+    name: blink1
+    state: present

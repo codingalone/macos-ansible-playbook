@@ -1,0 +1,11 @@
+---
+- name: Check if AnkerWork is already installed
+  stat:
+    path: /Applications/AnkerWork.app
+  register: ankerwork_installed
+
+- name: Install AnkerWork
+  community.general.homebrew_cask:
+    name: ankerwork
+    state: present
+  when: not ankerwork_installed.stat.exists

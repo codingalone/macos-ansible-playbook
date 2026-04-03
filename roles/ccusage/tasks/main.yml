@@ -1,0 +1,5 @@
+---
+- name: Install ccusage
+  community.general.homebrew:
+    name: ccusage
+    state: present
