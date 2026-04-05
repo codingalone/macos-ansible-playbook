@@ -3,3 +3,23 @@
   community.general.homebrew:
     name: mise
     state: present
+
+- name: Ensure mise config directory exists
+  file:
+    path: "{{ ansible_facts.env.HOME }}/.config/mise"
+    state: directory
+    mode: "0755"
+
+- name: Configure mise global tools
+  copy:
+    dest: "{{ ansible_facts.env.HOME }}/.config/mise/config.toml"
+    content: |
+      [tools]
+      go = "latest"
+      task = "latest"
+    mode: "0644"
+
+- name: Install mise tools
+  command: mise install
+  register: mise_install_result
+  changed_when: "'all tools are installed' not in mise_install_result.stderr"
