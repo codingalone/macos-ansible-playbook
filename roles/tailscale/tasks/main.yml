@@ -1,0 +1,16 @@
+---
+- name: Install tailscale
+  community.general.homebrew:
+    name: tailscale
+    state: present
+
+- name: Check if tailscaled is running
+  command: pgrep -x tailscaled
+  register: tailscaled_running
+  changed_when: false
+  failed_when: false
+
+- name: Remind to start tailscale daemon
+  debug:
+    msg: "Run 'sudo brew services start tailscale && sudo tailscale up' to start and authenticate"
+  when: tailscaled_running.rc != 0
