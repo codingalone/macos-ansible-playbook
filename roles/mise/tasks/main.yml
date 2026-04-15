@@ -17,6 +17,7 @@
       [tools]
       go = "latest"
       task = "latest"
+      uv = "latest"
     mode: "0644"
 
 - name: Install mise tools

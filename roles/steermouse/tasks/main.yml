@@ -1,0 +1,11 @@
+---
+- name: Check if SteerMouse is already installed
+  stat:
+    path: /Applications/SteerMouse.app
+  register: steermouse_installed
+
+- name: Install SteerMouse
+  community.general.homebrew_cask:
+    name: steermouse
+    state: present
+  when: not steermouse_installed.stat.exists

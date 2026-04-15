@@ -1,0 +1,11 @@
+---
+- name: Check if ActivityWatch is already installed
+  stat:
+    path: /Applications/ActivityWatch.app
+  register: activitywatch_installed
+
+- name: Install ActivityWatch
+  community.general.homebrew_cask:
+    name: activitywatch
+    state: present
+  when: not activitywatch_installed.stat.exists
