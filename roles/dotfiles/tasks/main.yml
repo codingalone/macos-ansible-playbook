@@ -1,0 +1,22 @@
+---
+- name: Ensure resources directory exists
+  file:
+    path: "{{ ansible_facts.env.HOME }}/resources"
+    state: directory
+
+- name: Clone dotfiles repository
+  ansible.builtin.git:
+    repo: https://github.com/codingalone/dotfiles.git
+    dest: "{{ ansible_facts.env.HOME }}/resources/dotfiles"
+    update: false
+
+- name: Stow dotfiles packages
+  command:
+    cmd: stow --target={{ ansible_facts.env.HOME }} --dir={{ ansible_facts.env.HOME }}/resources/dotfiles --verbose {{ item }}
+  loop:
+    - fish
+    - ghostty
+    - cmux
+    - nvim
+  register: stow_result
+  changed_when: stow_result.stderr | length > 0
