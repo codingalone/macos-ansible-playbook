@@ -12,11 +12,12 @@
 
 - name: Stow dotfiles packages
   command:
-    cmd: stow --target={{ ansible_facts.env.HOME }} --dir={{ ansible_facts.env.HOME }}/resources/dotfiles --verbose {{ item }}
+    cmd: stow --target={{ ansible_facts.env.HOME }} --dir={{ ansible_facts.env.HOME }}/resources/dotfiles --ignore='\.DS_Store' --verbose {{ item }}
   loop:
     - fish
     - ghostty
     - cmux
     - nvim
+    - karabiner
   register: stow_result
   changed_when: stow_result.stderr | length > 0

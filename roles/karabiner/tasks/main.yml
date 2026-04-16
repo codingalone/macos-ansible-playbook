@@ -14,7 +14,3 @@
     state: present
   when: not karabiner_app.stat.exists
 
-- name: Clone Karabiner-Elements config
-  git:
-    repo: https://github.com/codingalone/karabiner-elements.git
-    dest: ~/.config/karabiner
