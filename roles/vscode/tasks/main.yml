@@ -1,0 +1,11 @@
+---
+- name: Check if Visual Studio Code is already installed
+  stat:
+    path: /Applications/Visual Studio Code.app
+  register: vscode_installed
+
+- name: Install Visual Studio Code
+  community.general.homebrew_cask:
+    name: visual-studio-code
+    state: present
+  when: not vscode_installed.stat.exists

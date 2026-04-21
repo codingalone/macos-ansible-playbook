@@ -1,0 +1,11 @@
+---
+- name: Check if Typora is already installed
+  stat:
+    path: /Applications/Typora.app
+  register: typora_installed
+
+- name: Install Typora
+  community.general.homebrew_cask:
+    name: typora
+    state: present
+  when: not typora_installed.stat.exists

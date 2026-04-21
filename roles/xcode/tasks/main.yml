@@ -1,0 +1,16 @@
+---
+- name: Ensure mas is installed
+  community.general.homebrew:
+    name: mas
+    state: present
+
+- name: Check if Xcode is already installed
+  stat:
+    path: /Applications/Xcode.app
+  register: xcode_installed
+
+- name: Install Xcode from App Store
+  command: mas install 497799835
+  register: xcode_result
+  changed_when: "'Already installed' not in xcode_result.stderr"
+  when: not xcode_installed.stat.exists
