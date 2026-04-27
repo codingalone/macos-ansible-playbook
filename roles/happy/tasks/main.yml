@@ -1,0 +1,5 @@
+---
+- name: Install happy
+  community.general.homebrew:
+    name: happy-coder
+    state: present
