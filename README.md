@@ -22,6 +22,8 @@ git clone https://github.com/codingalone/macos-ansible-playbook.git ~/dev/ansibl
   && ansible-playbook playbook.yml
 ```
 
+playbook 実行時に macOS の sudo パスワードを聞かれる。`.pkg` 形式の cask (karabiner-elements / displaylink / google-japanese-ime / google-drive 等) のインストールには sudo が必要なため。
+
 ## App Store のアプリについて
 
-`mas` 経由でインストールする App Store アプリ (Xcode / Dato / Bitwarden など) は、Apple ID で初回だけ App Store GUI から「入手」 (Get) を押しておく必要がある。`mas` は acquire (購入/入手) は出来ず、既に Apple ID に紐付いたアプリの install しか出来ないため。
+`mas` 経由でインストールする App Store アプリ (Xcode / Dato / Bitwarden など) は、初回だけ App Store GUI から「入手」 (Get) を押しておくか、または既に当該アプリを購入/入手済みの Apple ID でログインしておく必要がある。`mas` は acquire (購入/入手) は出来ず、既に Apple ID に紐付いたアプリの install しか出来ないため。

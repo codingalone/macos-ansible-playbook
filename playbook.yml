@@ -3,6 +3,11 @@
   hosts: localhost
   connection: local
 
+  vars_prompt:
+    - name: ansible_become_password
+      prompt: "macOS sudo password (required for .pkg cask installers)"
+      private: true
+
   roles:
     - { role: karabiner, tags: karabiner }
     - { role: google-japanese-ime, tags: google-japanese-ime }
