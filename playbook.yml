@@ -4,44 +4,44 @@
   connection: local
 
   roles:
-    - karabiner
-    - google-japanese-ime
-    - raycast
-    - mise
-    - fish
-    - ghostty
-    - cmux
-    - alt-tab
-    - obsidian
-    - brave-browser
-    - claude-desktop
-    - claude-code
-    - dato
-    - google-cloud-sdk
-    - codex
-    - gh
-    - gemini-cli
-    - stow
-    - mas
-    - googleworkspace-cli
-    - google-chrome
-    - slack
-    - google-drive
-    - notchnook
-    - jetbrains-mono
-    - fzf
-    - duet
-    - nvchad
-    - ccusage
-    - blink1
-    - bitwarden
-    - ankerwork
-    - displaylink
-    - tailscale
-    - steermouse
-    - activitywatch
-    - dotfiles
-    - typora
-    - vscode
-    - xcode
-    - happy
+    - { role: karabiner, tags: karabiner }
+    - { role: google-japanese-ime, tags: google-japanese-ime }
+    - { role: raycast, tags: raycast }
+    - { role: mise, tags: mise }
+    - { role: fish, tags: fish }
+    - { role: ghostty, tags: ghostty }
+    - { role: cmux, tags: cmux }
+    - { role: alt-tab, tags: alt-tab }
+    - { role: obsidian, tags: obsidian }
+    - { role: brave-browser, tags: brave-browser }
+    - { role: claude-desktop, tags: claude-desktop }
+    - { role: claude-code, tags: claude-code }
+    - { role: dato, tags: dato }
+    - { role: google-cloud-sdk, tags: google-cloud-sdk }
+    - { role: codex, tags: codex }
+    - { role: gh, tags: gh }
+    - { role: gemini-cli, tags: gemini-cli }
+    - { role: stow, tags: stow }
+    - { role: mas, tags: mas }
+    - { role: googleworkspace-cli, tags: googleworkspace-cli }
+    - { role: google-chrome, tags: google-chrome }
+    - { role: slack, tags: slack }
+    - { role: google-drive, tags: google-drive }
+    - { role: notchnook, tags: notchnook }
+    - { role: jetbrains-mono, tags: jetbrains-mono }
+    - { role: fzf, tags: fzf }
+    - { role: duet, tags: duet }
+    - { role: nvchad, tags: nvchad }
+    - { role: ccusage, tags: ccusage }
+    - { role: blink1, tags: blink1 }
+    - { role: bitwarden, tags: bitwarden }
+    - { role: ankerwork, tags: ankerwork }
+    - { role: displaylink, tags: displaylink }
+    - { role: tailscale, tags: tailscale }
+    - { role: steermouse, tags: steermouse }
+    - { role: activitywatch, tags: activitywatch }
+    - { role: dotfiles, tags: dotfiles }
+    - { role: typora, tags: typora }
+    - { role: vscode, tags: vscode }
+    - { role: xcode, tags: xcode }
+    - { role: happy, tags: happy }
