@@ -10,9 +10,9 @@
     dest: "{{ ansible_facts.env.HOME }}/resources/dotfiles"
     update: false
 
-- name: Stow dotfiles packages
+- name: Stow dotfiles packages (adopt existing files)
   command:
-    cmd: stow --target={{ ansible_facts.env.HOME }} --dir={{ ansible_facts.env.HOME }}/resources/dotfiles --ignore='\.DS_Store' --verbose {{ item }}
+    cmd: stow --adopt --target={{ ansible_facts.env.HOME }} --dir={{ ansible_facts.env.HOME }}/resources/dotfiles --ignore='\.DS_Store' --verbose {{ item }}
   loop:
     - fish
     - ghostty
@@ -21,3 +21,8 @@
     - karabiner
   register: stow_result
   changed_when: stow_result.stderr | length > 0
+
+- name: Restore dotfiles content overwritten by --adopt
+  command:
+    cmd: git -C {{ ansible_facts.env.HOME }}/resources/dotfiles checkout -- .
+  changed_when: false
