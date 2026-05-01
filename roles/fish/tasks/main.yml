@@ -3,3 +3,25 @@
   community.general.homebrew:
     name: fish
     state: present
+
+- name: Get homebrew prefix
+  command: brew --prefix
+  register: brew_prefix
+  changed_when: false
+
+- name: Set fish_path fact
+  set_fact:
+    fish_path: "{{ brew_prefix.stdout }}/bin/fish"
+
+- name: Add fish to /etc/shells
+  lineinfile:
+    path: /etc/shells
+    line: "{{ fish_path }}"
+    state: present
+  become: true
+
+- name: Set fish as default shell
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: "{{ fish_path }}"
+  become: true
