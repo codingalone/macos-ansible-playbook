@@ -4,10 +4,17 @@
     name: mas
     state: present
 
+- name: Check if Bitwarden is already installed
+  stat:
+    path: /Applications/Bitwarden.app
+  register: bitwarden_installed
+
 - name: Install Bitwarden from App Store
-  command: mas purchase 1352778147
+  command: mas install 1352778147
+  become: true
   register: bitwarden_result
-  changed_when: "'Already got' not in bitwarden_result.stderr"
+  changed_when: "'Already installed' not in bitwarden_result.stderr"
+  when: not bitwarden_installed.stat.exists
 
 - name: Install Bitwarden CLI
   community.general.homebrew:

@@ -11,6 +11,7 @@
 
 - name: Install Xcode from App Store
   command: mas install 497799835
+  become: true
   register: xcode_result
   changed_when: "'Already installed' not in xcode_result.stderr"
   when: not xcode_installed.stat.exists
