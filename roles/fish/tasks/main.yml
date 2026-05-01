@@ -3,3 +3,15 @@
   community.general.homebrew:
     name: fish
     state: present
+
+- name: Ensure fish conf.d directory exists
+  file:
+    path: "{{ ansible_facts.env.HOME }}/.config/fish/conf.d"
+    state: directory
+
+- name: Add ~/.local/bin to fish PATH
+  copy:
+    content: |
+      fish_add_path $HOME/.local/bin
+    dest: "{{ ansible_facts.env.HOME }}/.config/fish/conf.d/local-bin.fish"
+    mode: "0644"
