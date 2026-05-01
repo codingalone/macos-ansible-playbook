@@ -11,6 +11,7 @@
 
 - name: Install Dato from App Store
   command: mas install 1470584107
+  become: true
   register: dato_result
   changed_when: "'Already installed' not in dato_result.stderr"
   when: not dato_installed.stat.exists

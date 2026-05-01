@@ -11,6 +11,7 @@
 
 - name: Install Bitwarden from App Store
   command: mas install 1352778147
+  become: true
   register: bitwarden_result
   changed_when: "'Already installed' not in bitwarden_result.stderr"
   when: not bitwarden_installed.stat.exists
