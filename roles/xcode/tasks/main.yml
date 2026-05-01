@@ -15,3 +15,14 @@
   register: xcode_result
   changed_when: "'Already installed' not in xcode_result.stderr"
   when: not xcode_installed.stat.exists
+
+- name: Check Xcode license status
+  command: xcodebuild -version
+  register: xcodebuild_version
+  failed_when: false
+  changed_when: false
+
+- name: Accept Xcode license
+  command: xcodebuild -license accept
+  become: true
+  when: "'You have not agreed' in (xcodebuild_version.stderr | default(''))"
