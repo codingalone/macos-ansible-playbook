@@ -8,4 +8,5 @@
   community.general.homebrew_cask:
     name: google-drive
     state: present
+    sudo_password: "{{ ansible_become_password | default(omit) }}"
   when: not google_drive_installed.stat.exists

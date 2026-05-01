@@ -12,5 +12,6 @@
   community.general.homebrew_cask:
     name: karabiner-elements
     state: present
+    sudo_password: "{{ ansible_become_password | default(omit) }}"
   when: not karabiner_app.stat.exists
 
