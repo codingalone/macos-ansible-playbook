@@ -4,7 +4,13 @@
     name: mas
     state: present
 
+- name: Check if Dato is already installed
+  stat:
+    path: /Applications/Dato.app
+  register: dato_installed
+
 - name: Install Dato from App Store
   command: mas install 1470584107
   register: dato_result
   changed_when: "'Already installed' not in dato_result.stderr"
+  when: not dato_installed.stat.exists
