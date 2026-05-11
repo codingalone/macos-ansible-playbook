@@ -13,8 +13,8 @@ xcode-select --install
 次にリポジトリを clone して playbook を流す:
 
 ```bash
-git clone https://github.com/codingalone/macos-ansible-playbook.git ~/dev/ansible \
-  && cd ~/dev/ansible \
+git clone https://github.com/codingalone/macos-ansible-playbook.git ~/resources/macos-ansible-playbook \
+  && cd ~/resources/macos-ansible-playbook \
   && /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" \
   && eval "$(/opt/homebrew/bin/brew shellenv)" \
   && brew install ansible \
